@@ -1,20 +1,22 @@
 require 'rubygems'
 require 'google-search'
 
-path = "/usr/share/dict/words"
+PATH = "/usr/share/dict/words"
+JOIN_WITH = "-"
 
-file = File.open path
+file = File.open PATH
 string = file.read
 words = string.split "\n"
 words = words.select do |word|
-  word.length > 1 && word.length <= 4
+  word.length > 1 && word.length <= 6
 end
 
 100.times do
-  names = (1..3).map do
+  num_words = rand(5) + 1
+  names = (1..num_words).map do
     words.sample
   end
-  name = names.join("")
+  name = names.join(JOIN_WITH)
   print "#{name}: "
   search = Google::Search::Web.new :query => "\"#{name}\""
   is_available = (search.get_response.items.length == 0)
