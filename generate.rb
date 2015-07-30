@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'google-search'
+require 'awesome_print'
 
 PATH = "/usr/share/dict/words"
 JOIN_WITH = "-"
@@ -19,6 +20,8 @@ end
   name = names.join(JOIN_WITH)
   print "#{name}: "
   search = Google::Search::Web.new :query => "\"#{name}\""
-  is_available = (search.get_response.items.length == 0)
+  results = search.get_response
+  ap results.items
+  is_available = (results.items.length == 0)
   puts is_available ? "Available" : "NO"
 end

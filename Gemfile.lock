@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    awesome_print (1.6.1)
     google-search (1.0.3)
       json
     json (1.7.7)
@@ -9,4 +10,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   google-search
+
+BUNDLED WITH
+   1.10.5
